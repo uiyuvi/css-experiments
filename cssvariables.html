@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CSS experiments | variables</title>
+  <!--<link rel="stylesheet" href="./reset.css" type="text/css">-->
+  <style>
+    :root {
+        --main-bg-color: #800000;
+    }
+    .targetA {
+        background: var(--main-bg-color, red);
+        color: snow;
+        width: 100px;
+        padding: 10px;
+    }
+  </style>
+</head>
+<body>
+        <div>
+            <h2>Css variables</h2>
+            <p>Reference : <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/var" target="_blank">Mozilla</a></p>
+        </div>
+    <div>
+        <label for="applyColor">color to apply in TARGET A</label>
+        <input id="applyColor" type="color" value="#800000">
+    </div>
+    <div class="targetA">TARGET A</div>
+    <div>
+        <h3>
+            How it works?
+        </h3>
+        <p> 
+            This page has default variable which will be added as property to style attribute to the root element (in this case html is root element)
+            <hr/>
+            To change the color of target A pick the color from color picker(here html5 input tpe color is used)
+        </p>
+        <p >Choosen color code is <span class="targetA-value">#800000</span></p>
+    </div>
+
+
+ 
+<script  type="text/javascript">
+    document.querySelector('#applyColor').addEventListener('change', handleUpdate);
+    function handleUpdate (e){
+        document.documentElement.style.setProperty('--main-bg-color',e.target.value);
+        document.querySelector('.targetA-value').innerHTML = e.target.value;
+        document.querySelector('.targetA-value').style.setProperty('color',e.target.value);
+    }
+</script>
+ 
+</body>
+</html>
